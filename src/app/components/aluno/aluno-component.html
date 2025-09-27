@@ -1,5 +1,3 @@
-<p>aluno works!</p>
-
 @if (loading) {<div class="alert alert-info"> Carregando </div> }
 @if (erro) {<div class="alert alert-danger"> {{erro}} </div> }
 @if (ok) {<div class="alert alert-success"> {{ok}} </div> }
@@ -9,10 +7,12 @@
     <div class="col-sm-6 col-md-4">
         <input class="form-control"
                       [(ngModel)]="novoNome"
-                      placeholder="nome do aluno" >
+                      placeholder="nome do aluno" 
+                      required minlength="3">
         <input class="form-control"
                       [(ngModel)]="novocurso"
-                      placeholder="curso do aluno" >
+                      placeholder="curso do aluno" 
+                      required minlength="3">
         <input class="form-control"
                       [(ngModel)]="novotelefone"
                       placeholder="telefone do aluno" >

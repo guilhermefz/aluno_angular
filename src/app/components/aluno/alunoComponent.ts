@@ -46,7 +46,16 @@ export class alunoComponent implements OnInit {
     const nome = this.novoNome.trim();
     const cnpj = this.novocurso.trim();
     const telefone = this.novotelefone.trim();
+    
+    if (!this.novoNome || this.novoNome.length < 3) {
+      this.erro = 'O nome é obrigatório e deve ter no mínimo 3 caracteres.';
+      return;
+    }
 
+    if (!this.novocurso || this.novocurso.length < 3) {
+      this.erro = 'O curso é obrigatório e deve ter no mínimo 3 caracteres.';
+      return;
+    }
     if (!nome) {
       this.erro = 'Informe os valores do campo nome';
       return;
@@ -70,6 +79,8 @@ export class alunoComponent implements OnInit {
 
     this.loading = true;
     this.service.adicionar(payload).subscribe({
+      
+
       next: (p) => {
         this.ok = `aluno ${p.nome} salvo com sucesso`;
         this.loading = false;
