@@ -1,0 +1,38 @@
+<p>aluno works!</p>
+
+@if (loading) {<div class="alert alert-info"> Carregando </div> }
+@if (erro) {<div class="alert alert-danger"> {{erro}} </div> }
+@if (ok) {<div class="alert alert-success"> {{ok}} </div> }
+
+
+<div class="row g-2 align-items-center mb-3">
+    <div class="col-sm-6 col-md-4">
+        <input class="form-control"
+                      [(ngModel)]="novoNome"
+                      placeholder="nome do aluno" >
+        <input class="form-control"
+                      [(ngModel)]="novocurso"
+                      placeholder="curso do aluno" >
+        <input class="form-control"
+                      [(ngModel)]="novotelefone"
+                      placeholder="telefone do aluno" >
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-info" (click)="adicionar()">Adicionar</button>
+    </div>
+    
+</div>
+<ul class="list-group mb-3">
+    @for (p of alunos; track p.id) {
+        <li class="list-group-item d-flex justify-content-between
+        align-items-center">
+            <span>{{p.nome}} - {{p.curso}} - {{p.telefone}} </span>
+            <button class="btn btn-sm btn-outline-danger"
+                (click)="remover(p.id)">Remover</button>
+        </li>
+    }
+</ul>
+
+@if (alunos.length === 0) {
+    <div class="alert alert-info"> Nenhum aluno cadastrado</div>
+  }
